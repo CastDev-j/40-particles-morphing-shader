@@ -1,6 +1,8 @@
 uniform vec2 uResolution;
 uniform float uSize;
 uniform float uProgress;
+uniform vec3 uPrimaryColor;
+uniform vec3 uSecondaryColor;
 
 attribute vec3 aPositionTarget;
 attribute float aSize;
@@ -10,7 +12,6 @@ varying vec3 vColor;
 #include ../includes/simplex-noice.glsl
 
 void main() {
-
 
     float noiseOrigin = simplexNoise3d(position * 0.2);
     float noiseTarget = simplexNoise3d(aPositionTarget * 0.2);
@@ -37,5 +38,5 @@ void main() {
     gl_PointSize *= (1.0 / -viewPosition.z);
 
     // Varyings
-    vColor = vec3(noise);
+    vColor = mix(uPrimaryColor, uSecondaryColor, noise);
 }

@@ -212,13 +212,13 @@ gltfLoader.load("/models.glb", (gltf) => {
    */
 
   gui.addColor(debugObject, "primaryColor").onChange(() => {
-    particles.material!.uniforms.uPrimaryColor.value = new THREE.Color(
+    particles.material!.uniforms.uPrimaryColor.value.set(
       debugObject.primaryColor
     );
   });
 
   gui.addColor(debugObject, "secondaryColor").onChange(() => {
-    particles.material!.uniforms.uSecondaryColor.value = new THREE.Color(
+    particles.material!.uniforms.uSecondaryColor.value.set(
       debugObject.secondaryColor
     );
   });
